@@ -1,0 +1,15 @@
+{
+  "name": "Recent Gists",
+    "version": "0.0.1",
+    "description": "Adds a 'recently viewed gists' area to gist.github.com'",
+    "permissions": [
+      "history",
+      "https://gist.github.com"
+      ],
+    "background_page" : "background.html",
+    "content_scripts": [{
+      "matches": ["https://gist.github.com/*"],
+      "js": ["jquery-1.7.1.min.js","extension.js"]
+    }]
+}
+

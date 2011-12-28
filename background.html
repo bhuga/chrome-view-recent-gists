@@ -1,0 +1,29 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      chrome.extension.onRequest.addListener(function (request, sender, respond) {
+        if (request.gist == "history") {
+          var gistItems = [];
+          var pushedIds = [];
+          var microsecondsPerMonth = 1000 * 60 * 60 * 24 * 7 * 4;
+          var oneMonthAgo = (new Date).getTime() - microsecondsPerMonth
+          chrome.history.search({ text: '', startTime: oneMonthAgo, maxResults: 1000000 }, function(historyItems) {
+            for(var i = 0; i < historyItems.length; i++) {
+              var url = historyItems[i].url
+              if (url.indexOf('gist.github.com') > -1 && url.match(/gist.github.com\/(\d+)/)) {
+                id = (url.match(/gist.github.com\/(\d+)/))[1]
+                if (pushedIds.indexOf(id) == -1) {
+                  gistItems.push(historyItems[i]);
+                  pushedIds.push(id);
+                }
+              }
+            }
+            respond(gistItems);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
