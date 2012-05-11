@@ -1,8 +1,9 @@
 Chrome Recent Gists
 ===================
 
-Adds a big old column of recently viewed gists to the right nav bar on gist.github.com.
+Adds a big old column of recently viewed gists to the right nav bar on
+<https://gist.github.com>. Sweet.
 
-Kinda assuming you can load an unpacked extension here, homies.
+You can install it directly by clicking: <https://dinosaur.s3.amazonaws.com/chrome-recent-gists.crx>
 
 Public domain, steal away. See the attached UNLICENSE.
